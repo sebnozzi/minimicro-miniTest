@@ -32,7 +32,7 @@ Example:
 
 ```
 test_one_plus_one_equals_two = function
-	assertEqual 2, 1+1, "Adding did not work"
+	assertEqual 1+1, 2, "Adding did not work"
 end function
 ```
 
