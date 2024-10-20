@@ -10,7 +10,9 @@ _public_api = [
 "assertTrue",
 "assertFalse",
 "assertNull",
-"assertNotNull"]
+"assertNotNull",
+// Force failure
+"fail"]
 
 // These make it possible to run actions before/after each test
 _lifecycle_functions = [
@@ -88,6 +90,15 @@ assertNull = function(value, desc)
 	fail msg
 end function
 
+// === FAILURE
+
+fail = function(errMsg)
+	callStackLineText = "(current program) line "
+	runner.lastTestFailed = true
+	printColor color.red, "FAIL!"
+	printColor color.pink, errMsg + " (line: " + findFailureLineNr + ")"
+end function
+
 // === PRIVATE
 
 printColor = function(colr, msg, delimiter=null)
@@ -106,13 +117,6 @@ printColor = function(colr, msg, delimiter=null)
 	
 	text.color = prev_color
 	text.delimiter = prev_delim
-end function
-
-fail = function(errMsg)
-	callStackLineText = "(current program) line "
-	runner.lastTestFailed = true
-	printColor color.red, "FAIL!"
-	printColor color.pink, errMsg + " (line: " + findFailureLineNr + ")"
 end function
 
 // Try to find the line-nr where a test-failure took place

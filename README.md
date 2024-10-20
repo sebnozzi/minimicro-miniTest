@@ -65,3 +65,14 @@ The following assert-functions are available:
 It is possible to run code _before_ and _after_ each test.
 
 Just define a `beforeEach` and / or `afterEach` function as needed.
+
+## Force failure
+
+You might want to force a failure yourself (e.g. when writing
+custom assertion functions, or to signal an unimplemented test).
+
+For that you have the `fail` function:
+
+|Name|Parameters|
+|----|----------|
+|fail|message|
